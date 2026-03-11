@@ -1,0 +1,9 @@
+name: Monday Item Check
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  monday-check:
+    uses: dreamteamapp/.github/.github/workflows/monday-item-check.yml@master
