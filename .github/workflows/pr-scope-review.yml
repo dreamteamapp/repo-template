@@ -1,0 +1,17 @@
+name: PR Scope Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+    branches: [master]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  pr-scope-review:
+    if: github.event.pull_request.head.repo.fork == false
+    uses: dreamteamapp/.github/.github/workflows/pr-scope-review.yml@master
+    secrets:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
