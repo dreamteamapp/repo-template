@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
 
+concurrency:
+  group: monday-check-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   monday-check:
     uses: dreamteamapp/.github/.github/workflows/monday-item-check.yml@master
