@@ -5,6 +5,10 @@ on:
     types: [opened, synchronize, ready_for_review, reopened]
     branches: [master]
 
+concurrency:
+  group: pr-scope-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 permissions:
   contents: read
   pull-requests: write
